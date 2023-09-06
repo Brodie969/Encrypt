@@ -9,8 +9,11 @@ form.addEventListener('submit', function(event) {
 });
 
 function hash(key) {
-    let password = key.split("").reverse().join("");
-    return password
+    let password = ""
+    key = key.split("").reverse().join("");
+    for (let i = 0; i < key.length; i++) {
+        char = key[i];
+        password = password.concat(char.charCodeAt(0).toString(2));
+    }
+    return password;
 }
-
-
