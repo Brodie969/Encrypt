@@ -1,7 +1,7 @@
-const form = document.getElementById('myForm');
+const form = document.getElementById('login');
 form.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevents the form from submitting normally
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;    
-    alert(`Name: ${name}\nEmail: ${email}`);
+    const username = document.getElementById('username').value;
+    const key = document.getElementById('key').value;    
+    alert(`Name: ${username}\nAccess Key: ${key}`);
 });
