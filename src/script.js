@@ -30,9 +30,7 @@ function hash(key) {
         }
         revBin = revBin.concat(char);
     }
-    
     console.log("Binary: " + bin);
     console.log("Inverted Binary: " + revBin);
-
     return revBin;
 }
