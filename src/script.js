@@ -7,5 +7,6 @@ form.addEventListener('submit', function(event) {
 });
 
 function hash() {
-    let password = key;
+    let password = key.split("").reverse().join("");
+    return password
 }
