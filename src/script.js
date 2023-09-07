@@ -3,12 +3,12 @@ form.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevents the form from submitting normally
     const username = document.getElementById('name').value;
     const key = document.getElementById('key').value;
-    pass = sha1(key);
+    pass = hash(key);
     alert(`Name: ${username}\nAccess Key: ${key}\nHashed Key: ${pass}`);
 
 });
 
-function sha1(message) {
+function hash(message) {
     let h0 = 0x67452301;
     let h1 = 0xEFCDAB89;
     let h2 = 0x98BADCFE;
@@ -81,6 +81,6 @@ function sha1(message) {
     }
 
     // Produce the final hash value (big-endian) as a 160-bit number
-    const hh = (h0 << 128) | (h1 << 96) | (h2 << 64) | (h3 << 32) | h4;
+    let hh = (h0 << 128) | (h1 << 96) | (h2 << 64) | (h3 << 32) | h4;
     return hh.toString(16); // Return the hexadecimal representation of the hash
 }
