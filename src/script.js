@@ -17,6 +17,7 @@ function hash(key) {
     */
     let bin = ""
     let revBin = ""
+    let addedBin = 0;
     console.log("Access Key: " + key)
     key = key.split("").reverse().join("");
     for (let i = 0; i < key.length; i++) {
@@ -32,7 +33,6 @@ function hash(key) {
         }
         revBin = revBin.concat(char);
     }
-    int addedBin = 0;
     for (i = 0; i < revBin.length; i++) {
       char = revBin[i];
       if (i % 2 == 0) { // Check if for loop is even or odd
