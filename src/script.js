@@ -9,10 +9,12 @@ form.addEventListener('submit', function(event) {
 });
 
 function hash(key) {
-    /* Control Flow: 
+    /*
+    Control Flow:
     Key is converted to binary
     Binary is inverted (0 becomes 1 and 1 becomes 0)
-    Inverse binary is converted back to numbers*/
+    Inverse binary is converted back to numbers
+    */
     let bin = ""
     let revBin = ""
     console.log("Access Key: " + key)
@@ -30,7 +32,18 @@ function hash(key) {
         }
         revBin = revBin.concat(char);
     }
+    int addedBin = 0;
+    for (i = 0; i < revBin.length; i++) {
+      char = revBin[i];
+      if (i % 2 == 0) { // Check if for loop is even or odd
+         addedBin += char; // If for loop is even then add binary
+      } else {
+        addedBin -= char; // Otherwise subtract
+      }
+    }
+    addedBin = Math.abs(addedBin)
     console.log("Binary: " + bin);
     console.log("Inverted Binary: " + revBin);
-    return revBin;
+    console.log("Added Binary: " + addedBin);
+    return addedBin;
 }
