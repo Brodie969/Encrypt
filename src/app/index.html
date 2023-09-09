@@ -7,13 +7,18 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <form id="add">
-            <label for="name">Task Name:</label><br>
-            <input type="text" id="name" name="name" value=""><br>
-            <label for="description">Task Description:</label><br>
-            <textarea id="description" name="description"></textarea><br><br>
-            <input type="submit" value="Submit">
-        </form>
+        <div id="input">
+            <form id="add">
+                <label for="name">Task Name:</label><br>
+                <input type="text" id="name" name="name" value=""><br>
+                <label for="description">Task Description:</label><br>
+                <textarea id="description" name="description"></textarea><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div id="tasks">
+            <h3>Tasks:</h3>
+        </div>
         <script src="script.js"></script>
     </body>
 </html>
