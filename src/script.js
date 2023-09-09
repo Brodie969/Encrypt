@@ -5,7 +5,6 @@ form.addEventListener('submit', function(event) {
     const key = document.getElementById('key').value;
     pass = hash(key);
     alert(`Name: ${username}\nAccess Key: ${key}\nHashed Key: ${pass}`);
-
 });
 
 function hash(message) {
