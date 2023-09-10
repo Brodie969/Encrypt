@@ -68,6 +68,10 @@ input[type="submit"]:hover {
     resize: vertical;
 }
 
+footer {
+    text-align: center;
+}
+
 /* Add responsive styles for small screens */
 @media screen and (max-width: 600px) {
     form {
