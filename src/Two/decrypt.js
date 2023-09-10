@@ -1,11 +1,3 @@
-const form = document.getElementById('encrypt');
-form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevents the form from submitting normally
-    const key = document.getElementById('key').value;
-    const text = document.getElementById('content').value;
-    $.update(key, text);
-});
-
 const form1 = document.getElementById('decrypt');
 form1.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevents the form from submitting normally
@@ -14,30 +6,11 @@ form1.addEventListener('submit', function(event) {
     $.update(key1, text1);
 });
 
-$.update = function (access, content) {
-    let input = $("#content").val();
-    let output = encrypt(access, content);
-    $("#output").val(output);
-};
-
 $.update1 = function (access, content) {
     let input = $("#content1").val();
     let output = decrypt(access, content);
     $("#output1").val(output);
 };
-
-/* Thoughts:
-Get numerical key (one-way)
-Convert Message To Hexadecimal
-Key Is Added To Message */
-
-function encrypt(key, text) {
-    key = sha1(key);
-    key = parseInt(key);
-    text = toHex(text);
-    text += key;
-    return text;
-}
 
 /* Thoughts:
 Get numerical key (one-way)
@@ -50,10 +23,6 @@ function decrypt(key, text) {
     text -= key;
     text = toAscii(text);
     return text;
-}
-
-function toHex(message) {
-    return message.split('').map(char => char.charCodeAt(0).toString(16)).join('');
 }
 
 function toAscii(message) {
