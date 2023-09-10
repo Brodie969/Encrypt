@@ -1,17 +1,16 @@
-const form = document.getElementById('encrypt');
+const form = document.getElementById('sha1');
 form.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevents the form from submitting normally
-    const key = document.getElementById('key').value;
-    const text = document.getElementById('content').value;
     $.update();
 });
 
 $.update = function () {
     let input = $("#content").val();
-    $("#encryptout").val(input);
+    let output = encrypt(input);
+    $("#output").val(output);
 };
 
-function oneWayEncrypt(message) {
+function encrypt(message) {
     let h0 = 0x67452301;
     let h1 = 0xEFCDAB89;
     let h2 = 0x98BADCFE;
@@ -85,6 +84,10 @@ function oneWayEncrypt(message) {
 
     // Produce the final hash value (big-endian) as a 160-bit number
     let hh = (h0 << 128) | (h1 << 96) | (h2 << 64) | (h3 << 32) | h4;
-    console.log(hh);
-    return hh.toString(16); // Return the hexadecimal representation of the hash
+    hh += h0;
+    hh += h1;
+    hh += h2;
+    hh += h3;
+    hh += h4;
+    return hh;
 }
