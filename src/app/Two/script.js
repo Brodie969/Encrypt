@@ -20,11 +20,8 @@ Key Is Added To Message */
 function encrypt(key, text) {
     key = sha1(key);
     key = parseInt(key);
-    console.log("Parsed Key: " + key);
     text = toHex(text);
-    console.log(text);
     text += key;
-    console.log(text);
     return text;
 }
 
