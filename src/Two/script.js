@@ -1,9 +1,17 @@
-const form = document.getElementById('encrypt');
-form.addEventListener('submit', function(event) {
+const encrypt = document.getElementById('encrypt');
+encrypt.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevents the form from submitting normally
     const key = document.getElementById('key').value;
     const text = document.getElementById('content').value;
     $.update(key, text);
+});
+
+const decrypt = document.getElementById('decrypt');
+decrypt.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevents the form from submitting normally
+    const key1 = document.getElementById('key1').value;
+    const text1 = document.getElementById('content1').value;
+    $.update(key1, text1);
 });
 
 $.update = function (access, content) {
@@ -12,7 +20,13 @@ $.update = function (access, content) {
     $("#output").val(output);
 };
 
-/* Thoughts: 
+$.update1 = function (access, content) {
+    let input = $("#content1").val();
+    let output = decrypt(access, content);
+    $("#output1").val(output);
+};
+
+/* Thoughts:
 Get numerical key (one-way)
 Convert Message To Hexadecimal
 Key Is Added To Message */
@@ -25,7 +39,7 @@ function encrypt(key, text) {
     return text;
 }
 
-/* Thoughts: 
+/* Thoughts:
 Get numerical key (one-way)
 Key Is Subtracted From Message
 Convert Hexadecimal To Message */
@@ -39,23 +53,12 @@ function decrypt(key, text) {
 }
 
 function toHex(message) {
-    out = "";
-    for (let i = 0; i < message.length; i++) {
-        let char = message.charCodeAt(i);
-        out += char;
-    }
-    return out;
+    return message.split('').map(char => char.charCodeAt(0).toString(16)).join('');
 }
 
-function toAscii(message)
- {
-	var hex  = message.toString();
-	var str = '';
-	for (var n = 0; n < hex.length; n += 2) {
-		str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
-	}
-	return str;
- }
+function toAscii(message) {
+    return parseInt(message, 16).toString();
+}
 
 function sha1(message) {
     let h0 = 0x67452301;
