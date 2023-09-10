@@ -1,13 +1,13 @@
-const encrypt = document.getElementById('encrypt');
-encrypt.addEventListener('submit', function(event) {
+const form = document.getElementById('encrypt');
+form.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevents the form from submitting normally
     const key = document.getElementById('key').value;
     const text = document.getElementById('content').value;
     $.update(key, text);
 });
 
-const decrypt = document.getElementById('decrypt');
-decrypt.addEventListener('submit', function(event) {
+const form1 = document.getElementById('decrypt');
+form1.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevents the form from submitting normally
     const key1 = document.getElementById('key1').value;
     const text1 = document.getElementById('content1').value;
