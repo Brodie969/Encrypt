@@ -13,7 +13,7 @@ $.update = function (access, content) {
 };
 
 /* Thoughts: 
-Get numerical key
+Get numerical key (one-way)
 Convert Message To Hexadecimal
 Key Is Added To Message */
 
@@ -25,6 +25,19 @@ function encrypt(key, text) {
     return text;
 }
 
+/* Thoughts: 
+Get numerical key (one-way)
+Key Is Subtracted From Message
+Convert Hexadecimal To Message */
+
+function decrypt(key, text) {
+    key = sha1(key);
+    key = parseInt(key);
+    text -= key;
+    text = toAscii(text);
+    return text;
+}
+
 function toHex(message) {
     out = "";
     for (let i = 0; i < message.length; i++) {
@@ -33,6 +46,16 @@ function toHex(message) {
     }
     return out;
 }
+
+function toAscii(message)
+ {
+	var hex  = message.toString();
+	var str = '';
+	for (var n = 0; n < hex.length; n += 2) {
+		str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+	}
+	return str;
+ }
 
 function sha1(message) {
     let h0 = 0x67452301;
