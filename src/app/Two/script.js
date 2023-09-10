@@ -3,19 +3,41 @@ form.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevents the form from submitting normally
     const key = document.getElementById('key').value;
     const text = document.getElementById('content').value;
-    $.update();
+    $.update(key, text);
 });
 
-$.update = function () {
+$.update = function (access, content) {
     let input = $("#content").val();
-    $("#encryptout").val(input);
+    let output = encrypt(access, content);
+    $("#output").val(output);
 };
 
-function twoWayEncrypt() {
-    return 0;
+/* Thoughts: 
+Get numerical key
+Convert Message To Hexadecimal
+Key Is Added To Message */
+
+function encrypt(key, text) {
+    key = sha1(key);
+    key = parseInt(key);
+    console.log("Parsed Key: " + key);
+    text = toHex(text);
+    console.log(text);
+    text += key;
+    console.log(text);
+    return text;
 }
 
-function oneWayEncrypt(message) {
+function toHex(message) {
+    out = "";
+    for (let i = 0; i < message.length; i++) {
+        let char = message.charCodeAt(i);
+        out += char;
+    }
+    return out;
+}
+
+function sha1(message) {
     let h0 = 0x67452301;
     let h1 = 0xEFCDAB89;
     let h2 = 0x98BADCFE;
@@ -89,6 +111,10 @@ function oneWayEncrypt(message) {
 
     // Produce the final hash value (big-endian) as a 160-bit number
     let hh = (h0 << 128) | (h1 << 96) | (h2 << 64) | (h3 << 32) | h4;
-    console.log(hh);
-    return hh.toString(16); // Return the hexadecimal representation of the hash
+    hh += h0;
+    hh += h1;
+    hh += h2;
+    hh += h3;
+    hh += h4;
+    return hh;
 }
