@@ -2,7 +2,9 @@
 
 ~~A task manager that can add, edit, and view tasks, to help stay organised.~~
 
-I have changed this app from a "To Do List" app to a Messaging/Communication app.
+~~I have changed this app from a "To Do List" app to a Messaging/Communication app.~~
+
+Unfortunately due to a lack of motivation this will now just be a simple project to show my encryption and hashing skills.
 
 # Flow:
 
