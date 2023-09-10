@@ -8,16 +8,17 @@
     </head>
     <body>
         <div id="input">
-            <form id="send">
-                <label for="subject">Subject:</label><br>
-                <input type="text" id="subject" name="subject" value=""><br>
-                <label for="content">Task Description:</label><br>
+            <h2>Two Way Encryption:</h2>
+            <form id="encrypt">
+                <label for="key">Key:</label><br>
+                <input type="text" id="key" name="key" value=""><br><br>
+                <label for="content">Content To Encrypt:</label><br>
                 <textarea id="content" name="content"></textarea><br><br>
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit"><br><br>
             </form>
         </div>
-        <div id="message">
-            <h2>Message:</h2>
+        <div id="output">
+            <textarea id="encryptout"></textarea>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="script.js"></script>
