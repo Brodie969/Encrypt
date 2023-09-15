@@ -1,4 +1,4 @@
-# Encrypt
+# brodie969/encrypt
 
 Just a simple project to show my encryption and hashing skills.
 
