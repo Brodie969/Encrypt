@@ -1,37 +1,16 @@
-// Working!
-
-const form = document.getElementById('encrypt');
+const form = document.getElementById('hash');
 form.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevents the form from submitting normally
-    const key = document.getElementById('key').value;
-    const text = document.getElementById('content').value;
-    $.update(key, text);
+    $.update();
 });
 
-$.update = function (access, content) {
+$.update = function () {
     let input = $("#content").val();
-    let output = encrypt(access, content);
+    let output = encrypt(input);
     $("#output").val(output);
 };
 
-/* Thoughts:
-Get numerical key (one-way)
-Convert Message To Hexadecimal
-Key Is Added To Message */
-
-function encrypt(key, text) {
-    key = sha1(key);
-    key = parseInt(key);
-    text = toHex(text);
-    text += key;
-    return text;
-}
-
-function toHex(message) {
-    return message.split('').map(char => char.charCodeAt(0).toString(16)).join('');
-}
-
-function sha1(message) {
+function encrypt(message) {
     let h0 = 0x67452301;
     let h1 = 0xEFCDAB89;
     let h2 = 0x98BADCFE;
